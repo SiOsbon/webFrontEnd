@@ -8350,3 +8350,13 @@ button.close {
   }
 }
 
+.mt-15 {
+  margin-top: 15px;
+}
+
+.flash-message-success {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+

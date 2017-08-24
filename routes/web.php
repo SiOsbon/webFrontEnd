@@ -17,9 +17,12 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'TaskController@index')->name('home');
+
+    Route::post('/task/create', 'TaskController@create')->name('task_create');
+});
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
-
 Route::post('/', 'Auth\LoginController@login');
 
