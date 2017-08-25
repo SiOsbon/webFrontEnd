@@ -27,6 +27,7 @@ class TaskController extends Controller
         //dd($taskCreateRequest->input());
         $task = $this->apiService->pushTaskToNetwork($taskCreateRequest->input());
         $taskCreateRequest->session()->flash('alert-success', Lang::get('task.created_success_msg'));
+        //dd($task);
         return redirect()->route('home');
     }
 

@@ -234,4 +234,6 @@ return [
 
     ],
 
+    'uri_task_to_net' => env('uri_task_to_net'),
+
 ];

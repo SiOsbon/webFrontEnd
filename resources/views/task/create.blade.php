@@ -20,7 +20,7 @@
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                                 {{ Form::label('body', Lang::get('task.body_label'), ['class' => 'control-label col-md-2']) }}
                                 <div class="col-md-10">
-                                    {{ Form::textarea('body', null, ['size' => '92x15', 'class' => 'form-control']) }}
+                                    {{ Form::textarea('body', '{"taskName": "aaaa"}', ['size' => '92x15', 'class' => 'form-control']) }}
                                     @if ($errors->has('body'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('body') }}</strong>
