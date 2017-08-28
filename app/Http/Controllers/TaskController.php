@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskCreateRequest;
 use App\Services\ApiService;
-use Illuminate\Http\Request;
 use Lang;
 use App;
 
@@ -19,16 +18,30 @@ class TaskController extends Controller
     }
 
 
-    public function index() {
+    public function create() {
         return view('task.create');
     }
 
-    public function create(TaskCreateRequest $taskCreateRequest) {
-        //dd($taskCreateRequest->input());
-        $task = $this->apiService->pushTaskToNetwork($taskCreateRequest->input());
-        $taskCreateRequest->session()->flash('alert-success', Lang::get('task.created_success_msg'));
-        //dd($task);
-        return redirect()->route('home');
+    public function store(TaskCreateRequest $taskCreateRequest) {
+        $result = $this->apiService->pushTaskToNetwork($taskCreateRequest->input());
+        //dd($result);
+        if ($result['status'])
+            $taskCreateRequest->session()->flash('alert-success', Lang::get('task.created_success_msg'));
+        else
+            $taskCreateRequest->session()->flash('alert-danger', Lang::get('task.created_failed_msg'));
+        return redirect()->route('task_create');
+    }
+
+    public function index() {
+        $result = $this->apiService->getAllTasks();
+        $tasks = $result['tasks'];
+        return view('task.list', compact('tasks'));
+    }
+
+    public function view($taskId) {
+        $result = $this->apiService->getTaskById($taskId);
+        $task = $result['task'];
+        return view('task.view', compact('task'));
     }
 
 }

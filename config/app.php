@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Daratus'),
 
     /*
     |--------------------------------------------------------------------------
@@ -235,5 +235,7 @@ return [
     ],
 
     'uri_task_to_net' => env('uri_task_to_net'),
+    'uri_tasks' => env('uri_tasks'),
+    'uri_task' => env('uri_task'),
 
 ];
