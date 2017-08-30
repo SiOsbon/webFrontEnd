@@ -12,13 +12,14 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Task create</div>
 
                     <div class="panel-body">
-                        <form method="POST" action="{{ route('task_store') }}">
+                        <form method="POST" action="{{ route('data_contract_store') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('task') ? ' has-error' : '' }}">
-                                {{ Form::label('task', Lang::get('task.body_label'), ['class' => 'control-label col-md-2']) }}
+                                <div class="col-md-2">
+                                    Data contract:
+                                </div>
                                 <div class="col-md-10">
                                     {{ Form::textarea('task', '{"taskName": "aaaa"}', ['size' => '92x15', 'class' => 'form-control']) }}
                                     @if ($errors->has('task'))
@@ -30,7 +31,7 @@
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary pull-right mt-15">
-                                    @lang('task.submit_label')
+                                    Add contract
                                 </button>
                             </div>
                         </form>

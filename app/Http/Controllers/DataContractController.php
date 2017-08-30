@@ -7,7 +7,7 @@ use App\Services\ApiService;
 use Lang;
 use App;
 
-class TaskController extends Controller
+class DataContractController extends Controller
 {
 
     protected $apiService;
@@ -19,7 +19,7 @@ class TaskController extends Controller
 
 
     public function create() {
-        return view('task.create');
+        return view('data_contract.create');
     }
 
     public function store(TaskCreateRequest $taskCreateRequest) {
@@ -33,15 +33,15 @@ class TaskController extends Controller
     }
 
     public function index() {
-        $result = $this->apiService->getAllTasks();
-        $tasks = $result['tasks'];
-        return view('task.list', compact('tasks'));
+        $result = $this->apiService->getAllDataContracts();
+        $dataContracts = $result['data_contracts'];
+        return view('data_contract.list', compact('dataContracts'));
     }
 
     public function view($taskId) {
         $result = $this->apiService->getTaskById($taskId);
         $task = $result['task'];
-        return view('task.view', compact('task'));
+        return view('data_contract.view', compact('task'));
     }
 
 }

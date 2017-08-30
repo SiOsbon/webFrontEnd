@@ -27,7 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::post('/', 'Auth\LoginController@login');*/
 Route::get('/', 'HomeController@index');
 
-Route::get('/tasks', 'TaskController@index')->name('tasks');
-Route::get('/task/{id}', 'TaskController@view')->name('task_view');
-Route::get('/task-create', 'TaskController@create')->name('task_create');
-Route::post('/task-store', 'TaskController@store')->name('task_store');
+//Route::get('/tasks', 'TaskController@index')->name('tasks');
+Route::get('/data-contracts', 'DataContractController@index')->name('data_contracts');
+//Route::get('/task/{id}', 'TaskController@view')->name('task_view');
+Route::get('/data-contract/create', 'DataContractController@create')->name('data_contract_create');
+Route::post('/data-contract/store', 'DataContractController@store')->name('data_contract_store');

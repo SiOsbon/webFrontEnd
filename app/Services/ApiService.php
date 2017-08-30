@@ -28,17 +28,18 @@ class ApiService
         return $result;
     }
 
-    public function getAllTasks() {
+    public function getAllDataContracts() {
         $client = new Client();
         try {
-            $r = $client->get(config('app.uri_tasks'), []);
-            $tasks = json_decode($r->getBody(), true);
-            $result['tasks'] = $tasks;
+            $r = $client->get(config('api.uri_data_contracts'), []);
+            $dataContracts = json_decode($r->getBody(), true);
+            //dd($dataContracts);
+            $result['data_contracts'] = $dataContracts;
             $result['status'] = true;
         } catch (GuzzleException $e) {
             $response = $e->getResponse();
             $result['status'] = false;
-            $result['tasks'] = [];
+            $result['data_contracts'] = [];
             if ($response)
                 $result['error'] = $response->getBody()->getContents();
             else

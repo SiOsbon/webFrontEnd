@@ -234,8 +234,4 @@ return [
 
     ],
 
-    'uri_task_to_net' => env('uri_task_to_net'),
-    'uri_tasks' => env('uri_tasks'),
-    'uri_task' => env('uri_task'),
-
 ];

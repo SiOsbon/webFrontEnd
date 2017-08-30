@@ -45,8 +45,8 @@
                         @if (Auth::guest())
                             {{--<li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>--}}
-                            <li><a href="{{ route('tasks') }}">Tasks</a></li>
-                            <li><a href="{{ route('task_create') }}">Create task</a></li>
+                            <li><a href="{{ route('data_contracts') }}">Data contracts</a></li>
+                            <li><a href="{{ route('data_contract_create') }}">Create data contrac</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
