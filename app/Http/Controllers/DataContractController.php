@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TaskCreateRequest;
+use App\Http\Requests\DataContractRequest;
 use App\Services\ApiService;
 use Lang;
 use App;
@@ -22,14 +22,14 @@ class DataContractController extends Controller
         return view('data_contract.create');
     }
 
-    public function store(TaskCreateRequest $taskCreateRequest) {
-        $result = $this->apiService->pushTaskToNetwork($taskCreateRequest->input());
+    public function store(DataContractRequest $dataContractRequest) {
+        $result = $this->apiService->sendDataContract($dataContractRequest->input());
         //dd($result);
         if ($result['status'])
-            $taskCreateRequest->session()->flash('alert-success', Lang::get('task.created_success_msg'));
+            $dataContractRequest->session()->flash('alert-success', Lang::get('general.datac.created_success_msg'));
         else
-            $taskCreateRequest->session()->flash('alert-danger', Lang::get('task.created_failed_msg'));
-        return redirect()->route('task_create');
+            $dataContractRequest->session()->flash('alert-danger', Lang::get('general.datac.created_failed_msg'));
+        return redirect()->route('data_contracts');
     }
 
     public function index() {
@@ -38,10 +38,11 @@ class DataContractController extends Controller
         return view('data_contract.list', compact('dataContracts'));
     }
 
-    public function view($taskId) {
-        $result = $this->apiService->getTaskById($taskId);
-        $task = $result['task'];
-        return view('data_contract.view', compact('task'));
+    public function view($dataContractId) {
+        $result = $this->apiService->getDataContractById($dataContractId);
+        //dd($result);
+        $dataContract = $result['data_contract'];
+        return view('data_contract.view', compact('dataContract'));
     }
 
 }

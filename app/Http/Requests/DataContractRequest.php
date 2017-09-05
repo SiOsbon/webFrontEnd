@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskCreateRequest extends FormRequest
+class DataContractRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class TaskCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'task' => 'required|json'
+            'data_contract' => 'required|json'
         ];
     }
 }

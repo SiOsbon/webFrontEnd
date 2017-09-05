@@ -12,15 +12,15 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Task create</div>
+                    <div class="panel-heading">Data contract details</div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-3">Id</div>
-                            <div class="col-md-6">{{ $task['id'] }}</div>
+                            <div class="col-md-6">{{ $dataContract['id'] }}</div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">Name</div>
-                            <div class="col-md-6">{{ $task['name'] }}</div>
+                            <div class="col-md-6">{{ $dataContract['name'] }}</div>
                         </div>
                     </div>
                 </div>

@@ -8,18 +8,18 @@ use GuzzleHttp\Client;
 class ApiService
 {
 
-    public function getTaskById($taskId) {
+    public function getDataContractById($dataContractId) {
         $client = new Client();
         try {
-            $uri = config('app.uri_task').'/'.$taskId;
+            $uri = config('api.uri_data_contract').$dataContractId;
             $r = $client->get($uri);
-            $task = json_decode($r->getBody(), true);
-            $result['task'] = $task;
+            $dataContract = json_decode($r->getBody(), true);
+            $result['data_contract'] = $dataContract;
             $result['status'] = true;
         } catch (GuzzleException $e) {
             $response = $e->getResponse();
             $result['status'] = false;
-            $result['task'] = null;
+            $result['data_contract'] = null;
             if ($response)
                 $result['error'] = $response->getBody()->getContents();
             else
@@ -48,18 +48,18 @@ class ApiService
         return $result;
     }
 
-    public function pushTaskToNetwork($input) {
-        $jsonTask= $input['task'];
+    public function sendDataContract($input) {
+        $jsonDataContract= $input['data_contract'];
         $result = [];
         $client = new Client();
         try {
-            $r = $client->post(config('app.uri_task_to_net'), [
+            $r = $client->post(config('api.uri_data_contract'), [
                 'form_params' => [
-                    'task' => $jsonTask
+                    'dataContract' => $jsonDataContract
                 ]
             ]);
-            $task = json_decode($r->getBody(), true);
-            $result['task'] = $task;
+            $dataContract = json_decode($r->getBody(), true);
+            $result['data_contract'] = $dataContract;
             $result['status'] = true;
         } catch (GuzzleException $e) {
             $response = $e->getResponse();

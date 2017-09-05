@@ -16,15 +16,15 @@
                     <div class="panel-body">
                         <form method="POST" action="{{ route('data_contract_store') }}">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('task') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('data_contract') ? ' has-error' : '' }}">
                                 <div class="col-md-2">
                                     Data contract:
                                 </div>
                                 <div class="col-md-10">
-                                    {{ Form::textarea('task', '{"taskName": "aaaa"}', ['size' => '92x15', 'class' => 'form-control']) }}
-                                    @if ($errors->has('task'))
+                                    {{ Form::textarea('data_contract', '{"name": "aaaa"}', ['size' => '92x15', 'class' => 'form-control']) }}
+                                    @if ($errors->has('data_contract'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('task') }}</strong>
+                                            <strong>{{ $errors->first('data_contract') }}</strong>
                                         </span>
                                     @endif
                                 </div>

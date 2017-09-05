@@ -16,11 +16,17 @@
 
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-4"><strong>Name</strong></div>
+                            <div class="col-md-2"><strong>Id</strong></div>
+                            <div class="col-md-6"><strong>Name</strong></div>
                         </div>
                         @foreach($dataContracts as $dataContract)
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <a href="{{ route('data_contract_view', ['dataContractId' => $dataContract['id']]) }}">
+                                        {{ $dataContract['id'] }}
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
                                     {{ $dataContract['name'] }}
                                 </div>
                             </div>
