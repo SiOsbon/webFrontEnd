@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 
 class ApiService
 {
+    /* todo refactor, move to api/DataContractService */
 
     public function getDataContractById($dataContractId) {
         $client = new Client();
