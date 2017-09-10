@@ -17,7 +17,9 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-2"><strong>Id</strong></div>
-                            <div class="col-md-6"><strong>Name</strong></div>
+                            <div class="col-md-4"><strong>Name</strong></div>
+                            <div class="col-md-2"><strong>Status</strong></div>
+                            <div class="col-md-4"><strong>Operations</strong></div>
                         </div>
                         @foreach($dataContracts as $dataContract)
                             <div class="row">
@@ -26,9 +28,29 @@
                                         {{ $dataContract['id'] }}
                                     </a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     {{ $dataContract['name'] }}
                                 </div>
+
+                                @if ($dataContract["status"] == \App\DataContract::STATUS_STARTED)
+                                    <div class="col-md-2">
+                                        Started
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{{ route('data_contract_stop', ['dataContractId' => $dataContract['id']]) }}">
+                                            Stop
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="col-md-2">
+                                        Stopped
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{{ route('data_contract_start', ['dataContractId' => $dataContract['id']]) }}">
+                                            Start
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>

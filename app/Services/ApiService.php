@@ -73,4 +73,42 @@ class ApiService
         return $result;
     }
 
+    public function start($dataContractId) {
+        $client = new Client();
+        try {
+            $uri = config('api.uri_data_contract_start').$dataContractId;
+            $r = $client->get($uri);
+            $dataContract = json_decode($r->getBody(), true);
+            $result['data_contract'] = $dataContract;
+            $result['status'] = true;
+        } catch (GuzzleException $e) {
+            $response = $e->getResponse();
+            $result['status'] = false;
+            if ($response)
+                $result['error'] = $response->getBody()->getContents();
+            else
+                $result['error'] = $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function stop($dataContractId) {
+        $client = new Client();
+        try {
+            $uri = config('api.uri_data_contract_stop').$dataContractId;
+            $r = $client->get($uri);
+            $dataContract = json_decode($r->getBody(), true);
+            $result['data_contract'] = $dataContract;
+            $result['status'] = true;
+        } catch (GuzzleException $e) {
+            $response = $e->getResponse();
+            $result['status'] = false;
+            if ($response)
+                $result['error'] = $response->getBody()->getContents();
+            else
+                $result['error'] = $e->getMessage();
+        }
+        return $result;
+    }
+
 }

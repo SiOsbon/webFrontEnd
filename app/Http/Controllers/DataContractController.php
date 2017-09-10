@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DataContractRequest;
 use App\Services\ApiService;
+use Illuminate\Http\Request;
 use Lang;
 use App;
 
@@ -45,4 +46,23 @@ class DataContractController extends Controller
         return view('data_contract.view', compact('dataContract'));
     }
 
+    public function start(Request $request, $dataContractId) {
+        $result = $this->apiService->start($dataContractId);
+        if ($result['status'])
+            $request->session()->flash('alert-success', Lang::get('general.datac.start_success_msg',
+                ['contract_name' => $result['data_contract']['name']]));
+        else
+            $request->session()->flash('alert-danger', Lang::get('general.datac.start_failed_msg'));
+        return redirect()->route('data_contracts');
+    }
+
+    public function stop(Request $request, $dataContractId) {
+        $result = $this->apiService->stop($dataContractId);
+        if ($result['status'])
+            $request->session()->flash('alert-success', Lang::get('general.datac.stop_success_msg',
+                ['contract_name' => $result['data_contract']['name']]));
+        else
+            $request->session()->flash('alert-danger', Lang::get('general.datac.stop_failed_msg'));
+        return redirect()->route('data_contracts');
+    }
 }
