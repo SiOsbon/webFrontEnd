@@ -25,7 +25,6 @@ class DataContractController extends Controller
 
     public function store(DataContractRequest $dataContractRequest) {
         $result = $this->apiService->sendDataContract($dataContractRequest->input());
-        //dd($result);
         if ($result['status'])
             $dataContractRequest->session()->flash('alert-success', Lang::get('general.datac.created_success_msg'));
         else

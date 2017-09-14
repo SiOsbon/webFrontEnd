@@ -50,14 +50,19 @@ class ApiService
     }
 
     public function sendDataContract($input) {
-        $jsonDataContract= $input['data_contract'];
+        $dataContract = json_decode($input['json_data_contract']);
         $result = [];
         $client = new Client();
         try {
             $r = $client->post(config('api.uri_data_contract'), [
-                'form_params' => [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $dataContract
+                /*'form_params' => [
                     'dataContract' => $jsonDataContract
-                ]
+                ]*/
             ]);
             $dataContract = json_decode($r->getBody(), true);
             $result['data_contract'] = $dataContract;

@@ -24,7 +24,7 @@ class DataContractRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_contract' => 'required|json'
+            'json_data_contract' => 'required|json'
         ];
     }
 }
