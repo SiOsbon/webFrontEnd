@@ -46,6 +46,7 @@
                             {{--<li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>--}}
                             <li><a href="{{ route('nodes') }}">Node statistics</a></li>
+                            <li><a href="{{ route('statistics') }}">System status</a></li>
                             <li><a href="{{ route('data_contracts') }}">Data contracts</a></li>
                             <li><a href="{{ route('data_contract_create') }}">Upload data contract</a></li>
                         @else
