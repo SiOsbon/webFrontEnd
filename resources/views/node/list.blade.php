@@ -17,7 +17,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-2"><strong>Node id</strong></div>
-                            <div class="col-md-3"><strong>Name</strong></div>
+                            <div class="col-md-2"><strong>Name</strong></div>
+                            <div class="col-md-3"><strong>Task executed count</strong></div>
                             <div class="col-md-2"><strong>Location</strong></div>
                             <div class="col-md-3"><strong>Registered</strong></div>
                         </div>
@@ -26,8 +27,11 @@
                                 <div class="col-md-2">
                                     {{ $node['id'] }}
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     {{ $node['name'] }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ $node['totalExecutedTasksCount'] }}
                                 </div>
                                 <div class="col-md-2">
                                     {{ $node['location'] }}
