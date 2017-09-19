@@ -30,13 +30,14 @@
                 </div>
             </div>
         </div>
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-            <div id="dataContractChart"></div><br>
-            @columnchart('dataContractChart', 'dataContractChart')
-            <div id="tasksChart"></div>
-            @columnchart('tasksChart', 'tasksChart')
-                </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div id="dataContractChart"></div>
+                @columnchart('dataContractChart', 'dataContractChart')
+                <br>
+                <div id="tasksChart"></div>
+                @columnchart('tasksChart', 'tasksChart')
             </div>
+        </div>
     </div>
 @endsection

@@ -25,7 +25,7 @@
                         @foreach($nodes as $node)
                             <div class="row">
                                 <div class="col-md-2">
-                                    {{ $node['id'] }}
+                                    <a href="{{ route('node', ['nodeId' => $node['id']]) }}"> {{ $node['id'] }}</a>
                                 </div>
                                 <div class="col-md-2">
                                     {{ $node['name'] }}

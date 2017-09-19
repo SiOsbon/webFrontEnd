@@ -36,5 +36,6 @@ Route::get('/data-contracts/start/{dataContractId}', 'DataContractController@sta
 Route::get('/data-contracts/stop/{dataContractId}', 'DataContractController@stop')->name('data_contract_stop');
 
 Route::get('/nodes', 'NodeController@index')->name('nodes');
+Route::get('/node/{nodeId}', 'NodeController@view')->name('node');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
