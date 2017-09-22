@@ -116,4 +116,30 @@ class ApiService
         return $result;
     }
 
+    public function downloadResult($dataContractId) {
+        $params["uri"] = config('api.uri_data_contract_results').$dataContractId;
+        //dd($params);
+        $result = $this->requestGet($params);
+        return $result;
+    }
+
+    public function requestGet($params) {
+        $client = new Client();
+        try {
+            $uri = $params["uri"];
+            $r = $client->get($uri);
+            $result['body'] = json_decode($r->getBody(), true);
+            $result['status'] = true;
+        } catch (GuzzleException $e) {
+            $response = $e->getResponse();
+            $result['status'] = false;
+            $result['body'] = null;
+            if ($response)
+                $result['error'] = $response->getBody()->getContents();
+            else
+                $result['error'] = $e->getMessage();
+        }
+        return $result;
+    }
+
 }

@@ -18,8 +18,9 @@
                         <div class="row">
                             <div class="col-md-2"><strong>Id</strong></div>
                             <div class="col-md-4"><strong>Name</strong></div>
+                            <div class="col-md-2"><strong>Data</strong></div>
                             <div class="col-md-2"><strong>Status</strong></div>
-                            <div class="col-md-4"><strong>Operations</strong></div>
+                            <div class="col-md-2"><strong>Operations</strong></div>
                         </div>
                         @foreach($dataContracts as $dataContract)
                             <div class="row">
@@ -31,12 +32,14 @@
                                 <div class="col-md-4">
                                     {{ $dataContract['name'] }}
                                 </div>
-
+                                <div class="col-md-2">
+                                    <a href="{{ route('data_contract_results', ['dataContractId' => $dataContract['id']]) }}">Results</a>
+                                </div>
                                 @if ($dataContract["status"] == \App\DataContract::STATUS_STARTED)
                                     <div class="col-md-2">
                                         Started
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <a href="{{ route('data_contract_stop', ['dataContractId' => $dataContract['id']]) }}">
                                             Stop
                                         </a>
@@ -45,7 +48,7 @@
                                     <div class="col-md-2">
                                         Stopped
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <a href="{{ route('data_contract_start', ['dataContractId' => $dataContract['id']]) }}">
                                             Start
                                         </a>

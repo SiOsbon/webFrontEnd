@@ -12,6 +12,7 @@ class DataContractController extends Controller
 {
 
     protected $apiService;
+    protected $dataContractService;
 
     public function __construct(ApiService $apiService)
     {
@@ -63,5 +64,12 @@ class DataContractController extends Controller
         else
             $request->session()->flash('alert-danger', Lang::get('general.datac.stop_failed_msg'));
         return redirect()->route('data_contracts');
+    }
+
+    public function results(Request $request, $dataContractId) {
+        $result = $this->apiService->downloadResult($dataContractId);
+        $resultTasks = $result["body"];
+        //dd($resultTasks);
+        return view('data_contract.results', compact('resultTasks'));
     }
 }
