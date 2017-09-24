@@ -14,23 +14,16 @@ use GuzzleHttp\Client;
 class StatisticsService
 {
 
+    private $apiClientService;
+
+    public function __construct(ApiClientService $apiClientService)
+    {
+        $this->apiClientService = $apiClientService;
+    }
+
     public function getSystemStatistics() {
-        $client = new Client();
-        try {
-            $r = $client->get(config('api.uri_statistics'), []);
-            $statistics = json_decode($r->getBody(), true);
-            //dd($dataContracts);
-            $result['statistics'] = $statistics;
-            $result['status'] = true;
-        } catch (GuzzleException $e) {
-            $response = $e->getResponse();
-            $result['status'] = false;
-            $result['statistics'] = "";
-            if ($response)
-                $result['error'] = $response->getBody()->getContents();
-            else
-                $result['error'] = $e->getMessage();
-        }
+        $params["path"] = "/statistics/";
+        $result = $this->apiClientService->requestGet($params);
         return $result;
     }
 
