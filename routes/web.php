@@ -38,5 +38,7 @@ Route::get('/data-contracts/results/{dataContractId}', 'DataContractController@r
 
 Route::get('/nodes', 'NodeController@index')->name('nodes');
 Route::get('/node/{nodeId}', 'NodeController@view')->name('node');
+Route::post('/node/{nodeId}', 'NodeController@view');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
+Route::post('/statistics', 'StatisticsController@index');

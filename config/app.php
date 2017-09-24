@@ -233,6 +233,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
+        'AppHelper' => App\Helpers\AppHelper::class,
     ],
 
 ];

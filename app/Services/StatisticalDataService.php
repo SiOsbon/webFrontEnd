@@ -11,7 +11,8 @@ namespace App\Services;
 
 class StatisticalDataService
 {
-    public function calculateGroupedDataForChart($data, $timeZone, $interval, $count) {
+    public function calculateGroupedDataForChart($data, $timeZone, $interval, $period) {
+        $count = $period / $interval;
         $current = time() + $timeZone;
         $rows = [];
         $max = 0;
@@ -29,7 +30,10 @@ class StatisticalDataService
 
             $dt = new \DateTime();
             $dt->setTimestamp($newTs2);
-            $rows[] = [$dt->format('H').":00", $cnt];
+            if ($interval < 3600)
+                $rows[] = [$dt->format('H').":".$dt->format('i'), $cnt];
+            else
+                $rows[] = [$dt->format('H').":00", $cnt];
         }
         $result['rows'] = array_reverse($rows);
 
@@ -41,7 +45,8 @@ class StatisticalDataService
         return $result;
     }
 
-    public function calculateDataForChart($data, $timeZone, $interval, $count) {
+    public function calculateDataForChart($data, $timeZone, $interval, $period) {
+        $count = $period / $interval;
         ksort($data);
         $current = time() + $timeZone;
         $rows = [];
@@ -60,7 +65,10 @@ class StatisticalDataService
             }
             $dt = new \DateTime();
             $dt->setTimestamp($newTs2);
-            $rows[] = [$dt->format('H').":00", $cnt];
+            if ($interval < 3600)
+                $rows[] = [$dt->format('H').":".$dt->format('i'), $cnt];
+            else
+                $rows[] = [$dt->format('H').":00", $cnt];
         }
         $result['rows'] = array_reverse($rows);
 
