@@ -6,8 +6,13 @@
  */
 
 require('./bootstrap');
+//require('jquery-ui/ui/widgets/dialog.js');
+//require('bootstrap');
+//require('bootstrap/dist/css/bootstrap.min.css');
 
-//window.Vue = require('vue');
+window.Vue = require('vue');
+Vue.config.devtools = false;
+Vue.config.productionTip = false;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +20,10 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-/*Vue.component('example', require('./components/Example.vue'));
+//Vue.component('example', require('./components/Example.vue'));
+
+Vue.component('data-contract-create', require('./components/DataContractCreate.vue'));
 
 const app = new Vue({
     el: '#app'
-});*/
+});

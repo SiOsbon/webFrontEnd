@@ -22,13 +22,9 @@ class DataContractController extends Controller
         return view('data_contract.create');
     }
 
-    public function store(DataContractRequest $dataContractRequest) {
-        $result = $this->dataContractService->sendDataContract($dataContractRequest->input());
-        if ($result['status'])
-            $dataContractRequest->session()->flash('alert-success', Lang::get('general.datac.created_success_msg'));
-        else
-            $dataContractRequest->session()->flash('alert-danger', Lang::get('general.datac.created_failed_msg'));
-        return redirect()->route('data_contracts');
+    public function storeAjax(Request $request) {
+        $result = $this->dataContractService->sendDataContract($request->input());
+        return response()->json($result);
     }
 
     public function index() {

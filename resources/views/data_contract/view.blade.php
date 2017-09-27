@@ -22,6 +22,9 @@
                             <div class="col-md-3">Name</div>
                             <div class="col-md-6">{{ $dataContract['name'] }}</div>
                         </div>
+                        <pre>
+                            {{ print_r($dataContract) }}
+                        </pre>
                     </div>
                 </div>
             </div>

@@ -16,15 +16,16 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4"><strong>Nodes registered</strong></div>
-                            <div class="col-md-2">{{ $statistics["registeredNodesCount"] }}</div>
+
+                            <div class="col-md-2">{{ (array_key_exists("registeredNodesCount", $statistics) ? $statistics["registeredNodesCount"] : '') }}</div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><strong>Total data contracts</strong></div>
-                            <div class="col-md-2">{{ $statistics["dataContractsCount"] }}</div>
+                            <div class="col-md-2">{{ (array_key_exists("dataContractsCount", $statistics) ? $statistics["dataContractsCount"] : '') }}</div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><strong>Data contracts running</strong></div>
-                            <div class="col-md-2">{{ $statistics["activeDataContractsCount"] }}</div>
+                            <div class="col-md-2">{{ (array_key_exists("activeDataContractsCount", $statistics) ? $statistics["activeDataContractsCount"] : '') }}</div>
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ class ApiClientService
         } catch (GuzzleException $e) {
             $response = $e->getResponse();
             $result['status'] = false;
-            $result['body'] = null;
+            $result['body'] = [];
             if ($response)
                 $result['error'] = $response->getBody()->getContents();
             else

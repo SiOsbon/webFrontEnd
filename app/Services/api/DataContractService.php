@@ -28,7 +28,7 @@ class DataContractService
 
     public function sendDataContract($input) {
         $params["path"] = "/data-contract/";
-        $params["body"] = json_decode($input['json_data_contract']);
+        $params["body"] = $input;
         $result = $this->apiClientService->requestJson($params);
         return $result;
     }

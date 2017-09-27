@@ -47,7 +47,7 @@ class NodeController extends Controller
         if (array_key_exists("executedTaskTimes", $node)) {
             $executedTaskTimes = $node["executedTaskTimes"];
         }
-        $this->chartsService->generateNodeExecutedTasksChart($node["executedTaskTimes"], $params);
+        $this->chartsService->generateNodeExecutedTasksChart($executedTaskTimes, $params);
 
         return view('node.view', compact("node", "nodeTaskChart", "interval", "period"));
     }
