@@ -23,7 +23,7 @@
                             <div class="col-md-6">{{ $dataContract['name'] }}</div>
                         </div>
                         <pre>
-                            {{ print_r($dataContract) }}
+                            {{ json_encode($dataContract, JSON_PRETTY_PRINT) }}
                         </pre>
                     </div>
                 </div>
