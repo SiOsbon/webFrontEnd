@@ -30,7 +30,7 @@
                                             Data xpath: <input type="text" v-model="task.data[d_index].value"
                                                                v-bind:name="'xpath_'+d_index"/>
                                             <button v-on:click="removeDataItemFortask(task, d_index)">X</button>
-                                            <button v-on:click="openModalForXpath(task, d_index)">Open modal</button><br><br>
+                                            <button v-on:click="openModalForXpath(task, d_index)">Get Xpath</button><br><br>
                                         </div><br>
                                         <button v-on:click="addEmptyDataItemFortask(task)">Add data item</button>
                                     </div>
@@ -67,7 +67,7 @@
                     <h4 class="modal-title">Modal Header</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <p>Click on 'Rerieve target URL' first to retreive TargetURL page content</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

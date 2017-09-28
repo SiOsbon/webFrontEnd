@@ -8,7 +8,8 @@
                 dc: {
                     name: '',
                     tasks: []
-                }
+                },
+                newToken: ''
             };
         },
         methods: {
@@ -64,13 +65,19 @@
             },
             openTargetUrl: function(targetUrl) {
                 console.log(targetUrl);
-
+                data = {
+                    targetUrl: targetUrl
+                }
+                if (this.newToken) {
+                    data._token = this.newToken
+                }
                 jQuery.ajax({
                     url: this.ajaxScrapeUrl,
                     method: "POST",
                     dataType: "json",
-                    data: {targetUrl: targetUrl}
+                    data: data
                 }).done(function (data) {
+                    this.newToken = data.new_token;
                     if (data.status) {
                         $('.modal-body').html(data.body);
                         alert('Target URL content retrieved!');
