@@ -41944,6 +41944,11 @@ var component = {
             newToken: ''
         };
     },
+    watch: {
+        tasks: function tasks(val) {
+            console.log(val);
+        }
+    },
     methods: {
         addTask: function addTask(taskType) {
             task = this.getEmptyTaskObj();
@@ -41954,7 +41959,7 @@ var component = {
             task.data.push(this.getEmptyDataObj());
         },
         addEmptyUrlItemFortask: function addEmptyUrlItemFortask(task) {
-            task.urls.push("");
+            task.urls.push(null);
         },
         removeDataItemFortask: function removeDataItemFortask(task, dataIndex) {
             task.data.splice(dataIndex, 1);
@@ -41985,7 +41990,7 @@ var component = {
                 var value = getXPath(this);
                 var start_str = '/html/body/div/div[2]/div/div/div[2]';
                 value = value.substring(start_str.length);
-                value = '/body' + value;
+                value = '/html/body' + value;
                 //console.log(value);
                 $('.modal-body *').off('click');
                 //$('.modal-container').modal().hide();
@@ -41994,10 +41999,27 @@ var component = {
                 task.data[d_index].value = value;
             });
         },
-        openTargetUrl: function openTargetUrl(targetUrl) {
-            console.log(targetUrl);
+        openModalForUrlXpath: function openModalForUrlXpath(task, u_index) {
+            $('#myModal').modal('show');
+            $('.modal-body *').click(function (e) {
+                var value = getXPath(event.target);
+                var start_str = '/html/body/div/div[2]/div/div/div[2]';
+                value = value.substring(start_str.length);
+                value = '/html/body' + value;
+                //console.log(value);
+                $('.modal-body *').off('click');
+                //$('.modal-container').modal().hide();
+                $('#myModal').modal('hide');
+
+                task.urls[u_index] = value;
+                this.addEmptyUrlItemFortask(task); // need to add and remove that urls input field would be renewed
+                this.removeUrlFortask(task, u_index + 1);
+            }.bind(this));
+        },
+        openTargetUrl: function openTargetUrl(task) {
+            //console.log(targetUrl);
             data = {
-                targetUrl: targetUrl
+                targetUrl: task.targetURL
             };
             if (this.newToken) {
                 data._token = this.newToken;
@@ -42009,6 +42031,7 @@ var component = {
                 data: data
             }).done(function (data) {
                 this.newToken = data.new_token;
+                if (data.newTargetUrl) task.targetURL = data.newTargetUrl;
                 if (data.status) {
                     $('.modal-body').html(data.body);
                     alert('Target URL content retrieved!');

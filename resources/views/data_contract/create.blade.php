@@ -21,7 +21,7 @@
                             <div v-for="(task, task_index) in dc.tasks">
                                 Task type is: @{{task.type}} <button v-on:click="removeTask(task_index)">X</button><br>
                                 Task target url: <input type="text" name="target_url" v-model="dc.tasks[task_index].targetURL"/>
-                                <button v-on:click="openTargetUrl(dc.tasks[task_index].targetURL)">Rerieve target URL</button>
+                                <button v-on:click="openTargetUrl(dc.tasks[task_index])">Rerieve target URL</button>
                                 <div class="row">
                                     <div class="col-md-6">
                                         Data
@@ -38,7 +38,8 @@
                                         Urls
                                         <div v-for="(u, u_index) in task.urls">
                                             Url : <input type="text" name="url_name" v-model="task.urls[u_index]"/>
-                                            <button v-on:click="removeUrlFortask(task, u_index)">X</button><br><br>
+                                            <button v-on:click="removeUrlFortask(task, u_index)">X</button>
+                                            <button v-on:click="openModalForUrlXpath(task, u_index)">Get Xpath</button><br><br><br><br>
                                         </div><br>
                                         <button v-on:click="addEmptyUrlItemFortask(task)">Add Url item</button>
                                     </div>

@@ -16,10 +16,12 @@ class ScraperController extends Controller
     public function index(Request $request) {
         $input = $request->input();
         $result["status"] = 0;
+        $result['newTargetUrl'] = "";
         if ($input["targetUrl"]) {
             if (!Cache::has($input["targetUrl"])) {
                 $url = $input["targetUrl"];
-                $response = $this->getFinalResponse($url);
+                $c = $this->getFinalResponse($url);
+                $response = $c["content"];
                 if ($this->isHtml($response)) {
                     $tags = ['head', 'script', 'javascript'];
                     $response = $this->removeTags($response, $tags);
@@ -28,18 +30,23 @@ class ScraperController extends Controller
                     preg_match($pattern, $response, $matches);
                     $result["body"] = $matches[1];
                     $result["from_cache"] = 0;
-                    Cache::put($input["targetUrl"], $result["body"], 10);
+                    $result['newTargetUrl'] = $c["url"];
+                    $c["content"] = $response;
+                    Cache::put($input["targetUrl"], $c, 10);
                 } else {
                     $result["error"] = "not html";
                     $result["new_token"] = csrf_token();
                     return response()->json($result);
                 }
             } else {
-                $result["body"] = Cache::get($input["targetUrl"]);
+                $c = Cache::get($input["targetUrl"]);
+                $result["body"] = $c["content"];
+                $result['newTargetUrl'] = $c["url"];
                 $result["from_cache"] = 1;
             }
             $result["status"] = 1;
             $result['targetUrl'] = $input["targetUrl"];
+            //$result['newTargetUrl'] = $c["url"];
             $result["new_token"] = csrf_token();
         }
         return response()->json($result);
@@ -66,6 +73,9 @@ class ScraperController extends Controller
         $response = curl_getinfo( $ch );
         curl_close ( $ch );
 
+        $c["url"] = $response['url'];
+        $c["content"] = $content;
+
         if ($response['http_code'] == 301 || $response['http_code'] == 302)
         {
             ini_set("user_agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1");
@@ -75,7 +85,7 @@ class ScraperController extends Controller
             foreach( $headers as $value )
             {
                 if ( substr( strtolower($value), 0, 9 ) == "location:" )
-                    return get_final_url( trim( substr( $value, 9, strlen($value) ) ) );
+                    return $this->getFinalResponse(trim(substr($value, 9, strlen($value))));
             }
         }
 
@@ -83,11 +93,11 @@ class ScraperController extends Controller
             preg_match("/window\.location\=\"(.*)\"/i", $content, $value)
         )
         {
-            return get_final_url ( $value[1] );
+            return $this->getFinalResponse( $value[1] );
         }
         else
         {
-            return $content;
+            return $c;
         }
     }
 
