@@ -31,7 +31,10 @@ Route::get('/', 'HomeController@index');
 Route::get('/data-contracts', 'DataContractController@index')->name('data_contracts');
 Route::get('/data-contract/{dataContractId}', 'DataContractController@view')->name('data_contract_view');
 Route::get('/data-contracts/create', 'DataContractController@create')->name('data_contract_create');
+Route::get('/data-contracts/create2', 'DataContractController@create2')->name('data_contract_create2');
 Route::post('/data-contracts/store-ajax', 'DataContractController@storeAjax')->name('data_contract_store_ajax');
+Route::post('/data-contracts/store', 'DataContractController@store')->name('data_contract_store');
+
 Route::get('/data-contracts/start/{dataContractId}', 'DataContractController@start')->name('data_contract_start');
 Route::get('/data-contracts/stop/{dataContractId}', 'DataContractController@stop')->name('data_contract_stop');
 Route::get('/data-contracts/results/{dataContractId}', 'DataContractController@results')->name('data_contract_results');

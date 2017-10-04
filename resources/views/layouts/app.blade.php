@@ -49,6 +49,7 @@
                             <li><a href="{{ route('statistics') }}">System status</a></li>
                             <li><a href="{{ route('data_contracts') }}">Data contracts</a></li>
                             <li><a href="{{ route('data_contract_create') }}">Upload data contract</a></li>
+                            <li><a href="{{ route('data_contract_create2') }}">Upload data contract(2)</a></li>
 
                         @else
                             <li class="dropdown">

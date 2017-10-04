@@ -33,6 +33,13 @@ class DataContractService
         return $result;
     }
 
+    public function sendDataContract2($input) {
+        $params["path"] = "/data-contract/";
+        $params["body"] = json_decode($input['json_data_contract']);
+        $result = $this->apiClientService->requestJson($params);
+        return $result;
+    }
+
     public function start($dataContractId) {
         $params["path"] = "/data-contract/start/".$dataContractId;
         $result = $this->apiClientService->requestGet($params);
