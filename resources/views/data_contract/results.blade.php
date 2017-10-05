@@ -13,13 +13,17 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Data contract results</div>
-
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4"><strong>Title</strong></div>
-                            <div class="col-md-4"><strong>Data</strong></div>
-                        </div>
                         @for ($i=0; $i<count($resultTasks); $i++)
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{ $i + 1 }}) task:
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><strong>Title</strong></div>
+                                <div class="col-md-4"><strong>Data</strong></div>
+                            </div>
                             @foreach($resultTasks[$i]["data"] as $key => $value)
                                 <div class="row">
                                     <div class="col-md-4">
@@ -30,6 +34,11 @@
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="row">
+                                <div class="col-md-8">
+                                    &nbsp;
+                                </div>
+                            </div>
                         @endfor
                     </div>
                 </div>
