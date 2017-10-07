@@ -9,15 +9,18 @@
                 </div>
             @endif
         @endforeach
+            @php
+                $pageCnt = ceil($allCount/$count);
+            @endphp
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Data contract results</div>
+                    <div class="panel-heading">Data contract <strong>'{{ $contractName }}'</strong> results</div>
                     <div class="panel-body">
                         @for ($i=0; $i<count($resultTasks); $i++)
                             <div class="row">
                                 <div class="col-md-8">
-                                    {{ $i + 1 }}) task:
+                                     Task:
                                 </div>
                             </div>
                             <div class="row">
@@ -40,6 +43,30 @@
                                 </div>
                             </div>
                         @endfor
+
+                        @if ($allCount > count($count))
+                            <div class="row">
+                                <div class="col-md-12">
+                                @for($i=0; $i < $pageCnt; $i++)
+                                    @if ($i + 1 == $pageCnt)
+                                            @php
+                                                $sep = "";
+                                            @endphp
+                                        @else
+                                            @php
+                                                $sep = ", ";
+                                            @endphp
+                                    @endif
+                                    @if ($i == $page)
+                                        <strong>[{{($i + 1)}}]</strong>{{ $sep }}
+                                    @else
+                                        <a href="{{ route('data_contract_results', ['dataContractId' => $dataContractId,
+                                            'page' => $i]) }}">{{($i + 1)}}</a>{{ $sep }}
+                                    @endif
+                                @endfor
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

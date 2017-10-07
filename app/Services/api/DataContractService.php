@@ -52,8 +52,9 @@ class DataContractService
         return $result;
     }
 
-    public function downloadResult($dataContractId) {
-        $params["path"] = "/data-contract/results/".$dataContractId;
+    public function downloadResult($dataContractId, $page, $cnt) {
+        $params["path"] = "/data-contract/results/".$dataContractId."/".$page."/".$cnt;
+        //echo $params["path"]."<br>";
         $result = $this->apiClientService->requestGet($params);
         //dd($result);
         return $result;

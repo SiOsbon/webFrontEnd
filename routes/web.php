@@ -37,7 +37,7 @@ Route::post('/data-contracts/store', 'DataContractController@store')->name('data
 
 Route::get('/data-contracts/start/{dataContractId}', 'DataContractController@start')->name('data_contract_start');
 Route::get('/data-contracts/stop/{dataContractId}', 'DataContractController@stop')->name('data_contract_stop');
-Route::get('/data-contracts/results/{dataContractId}', 'DataContractController@results')->name('data_contract_results');
+Route::get('/data-contracts/results/{dataContractId}/{page?}', 'DataContractController@results')->name('data_contract_results');
 
 Route::get('/nodes', 'NodeController@index')->name('nodes');
 Route::get('/node/{nodeId}', 'NodeController@view')->name('node');

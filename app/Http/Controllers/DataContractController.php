@@ -73,10 +73,20 @@ class DataContractController extends Controller
         return redirect()->route('data_contracts');
     }
 
-    public function results(Request $request, $dataContractId) {
-        $result = $this->dataContractService->downloadResult($dataContractId);
-        $resultTasks = $result["body"];
-        //dd($resultTasks);
-        return view('data_contract.results', compact('resultTasks'));
+    public function results($dataContractId, $page = 0) {
+        $count = 5;
+        $result = $this->dataContractService->downloadResult($dataContractId, $page, $count);
+        //dd($result);
+        $body = $result["body"];
+        $contractName = $body["dataContractName"];
+        if (array_key_exists("pagenatedResults", $body)) {
+            $resultTasks = $body["pagenatedResults"];
+            $allCount = $body["allCount"];
+        } else {
+            $resultTasks = [];
+            $allCount = 0;
+        }
+        return view('data_contract.results', compact('resultTasks', 'allCount', 'page', 'count', 'dataContractId',
+            'contractName'));
     }
 }
