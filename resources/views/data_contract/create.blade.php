@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-body" id="app" is="data-contract-create" inline-template :submit_url="'{{route('data_contract_store_ajax')}}'"
+                    <div class="panel-body" id="app" is="data-contract-create" inline-template :submit_url="'{{$submit_url}}'"
                         :scrape_url="'{{route('scrape')}}'">
                         <div>
                             <span>Data contract name</span>

@@ -130,9 +130,17 @@
                     data: dataForSend
                 }).done(function (data) {
                     if (data.status) {
-                        alert("Data contract "+data.body.name+" created!");
+                        if (data.body.hasOwnProperty('contractStatus')) {
+                            if (data.body.contractStatus == 1) {
+                                alert("Data contract "+data.body.dataContract.name+" created!");
+                            } else {
+                                alert("Data contract "+data.body.dataContract.name+" is old one");
+                            }
+                        } else {
+                            alert("Data contract "+data.body.name+" created!");
+                        }
                     } else {
-                        alert("Data contract was not created!");
+                        alert("Failed!");
                     }
                     document.location.href = '/data-contracts';
                 }.bind(this));

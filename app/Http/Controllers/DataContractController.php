@@ -19,11 +19,15 @@ class DataContractController extends Controller
     }
 
     public function create() {
-        return view('data_contract.create');
+        return view('data_contract.create', ["submit_url" => route('data_contract_store_ajax')]);
     }
 
     public function create2() {
         return view('data_contract.create2');
+    }
+
+    public function findCreate() {
+        return view('data_contract.create', ["submit_url" => route('data_contract_find_store_ajax')]);
     }
 
     public function store(DataContractRequest $dataContractRequest)
@@ -38,6 +42,12 @@ class DataContractController extends Controller
 
     public function storeAjax(Request $request) {
         $result = $this->dataContractService->sendDataContract($request->input());
+        return response()->json($result);
+    }
+
+    public function findStoreAjax(Request $request) {
+        $result = $this->dataContractService->findUpdloadDataContract($request->input());
+        //dd($result);
         return response()->json($result);
     }
 

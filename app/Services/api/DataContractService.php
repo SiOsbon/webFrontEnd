@@ -33,6 +33,13 @@ class DataContractService
         return $result;
     }
 
+    public function findUpdloadDataContract($input) {
+        $params["path"] = "/data-contract/find-create/";
+        $params["body"] = $input;
+        $result = $this->apiClientService->requestJson($params);
+        return $result;
+    }
+
     public function sendDataContract2($input) {
         $params["path"] = "/data-contract/";
         $params["body"] = json_decode($input['json_data_contract']);
