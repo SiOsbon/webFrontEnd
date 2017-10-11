@@ -19,7 +19,7 @@ class DataContractController extends Controller
     }
 
     public function create() {
-        return view('data_contract.create', ["submit_url" => route('data_contract_store_ajax')]);
+        return view('data_contract.create', ["submit_url" => route('data_contract_store_ajax'), "redirect_url" => route('data_contract_create')]);
     }
 
     public function create2() {
@@ -27,7 +27,7 @@ class DataContractController extends Controller
     }
 
     public function findCreate() {
-        return view('data_contract.create', ["submit_url" => route('data_contract_find_store_ajax')]);
+        return view('data_contract.create', ["submit_url" => route('data_contract_find_store_ajax'), "redirect_url" => route('data_contract_find_create')]);
     }
 
     public function store(DataContractRequest $dataContractRequest)

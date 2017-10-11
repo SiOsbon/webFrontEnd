@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
 
 @section('content')
     <div class="container">
@@ -13,7 +13,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body" id="app" is="data-contract-create" inline-template :submit_url="'{{$submit_url}}'"
-                        :scrape_url="'{{route('scrape')}}'">
+                        :scrape_url="'{{route('scrape')}}'" :redirect_url="'{{$redirect_url}}'">
                         <div>
                             <span>Data contract name</span>
                             <input type="text" name="name" v-model="dc.name" class="form-control"/>

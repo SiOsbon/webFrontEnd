@@ -1,17 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Aurimas
- * Date: 2017-08-28
- * Time: 08:49
- */
-
 namespace App\Http\Controllers;
 
 
-class HomeController
+class HomeController extends Controller
 {
     public function index() {
         return view('home');
+    }
+
+    public function indexAdmin() {
+        return view('home_admin');
+    }
+
+    public function download() {
+        return view('download');
     }
 }

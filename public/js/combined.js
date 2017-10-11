@@ -41932,11 +41932,12 @@ module.exports = function normalizeComponent (
 
 
 var component = {
-    props: ['submit_url', 'scrape_url'],
+    props: ['submit_url', 'scrape_url', 'redirect_url'],
     data: function data() {
         return {
             ajaxUrl: this.submit_url,
             ajaxScrapeUrl: this.scrape_url,
+            redirectUrl: this.redirect_url,
             dc: {
                 name: '',
                 tasks: []
@@ -42071,7 +42072,7 @@ var component = {
                 } else {
                     alert("Failed!");
                 }
-                document.location.href = '/data-contracts';
+                document.location.href = this.redirectUrl;
             }.bind(this));
         }
     }

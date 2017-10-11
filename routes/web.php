@@ -23,20 +23,25 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/task/create', 'TaskController@create')->name('task_create');*/
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'HomeController@indexAdmin');
+    Route::get('/data-contracts/create', 'DataContractController@create')->name('data_contract_create');
+    Route::get('/data-contracts/create2', 'DataContractController@create2')->name('data_contract_create2');
+    Route::get('/data-contracts/find-create', 'DataContractController@findCreate')->name('data_contract_find_create');
+    Route::post('/data-contracts/store-ajax', 'DataContractController@storeAjax')->name('data_contract_store_ajax');
+    Route::post('/data-contracts/store', 'DataContractController@store')->name('data_contract_store');
+    Route::post('/data-contracts/find-store-ajax', 'DataContractController@findStoreAjax')->name('data_contract_find_store_ajax');
+});
+
 /*Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/', 'Auth\LoginController@login');*/
 Route::get('/', 'HomeController@index');
 
+Route::get('/download', 'HomeController@download')->name('download');
+
 //Route::get('/tasks', 'TaskController@index')->name('tasks');
 Route::get('/data-contracts', 'DataContractController@index')->name('data_contracts');
 Route::get('/data-contract/{dataContractId}', 'DataContractController@view')->name('data_contract_view');
-Route::get('/data-contracts/create', 'DataContractController@create')->name('data_contract_create');
-Route::get('/data-contracts/create2', 'DataContractController@create2')->name('data_contract_create2');
-Route::get('/data-contracts/find-create', 'DataContractController@findCreate')->name('data_contract_find_create');
-
-Route::post('/data-contracts/store-ajax', 'DataContractController@storeAjax')->name('data_contract_store_ajax');
-Route::post('/data-contracts/store', 'DataContractController@store')->name('data_contract_store');
-Route::post('/data-contracts/find-store-ajax', 'DataContractController@findStoreAjax')->name('data_contract_find_store_ajax');
 
 Route::get('/data-contracts/start/{dataContractId}', 'DataContractController@start')->name('data_contract_start');
 Route::get('/data-contracts/stop/{dataContractId}', 'DataContractController@stop')->name('data_contract_stop');

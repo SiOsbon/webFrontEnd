@@ -1,10 +1,11 @@
 <script type="text/javascript">
     var component = {
-        props: ['submit_url', 'scrape_url'],
+        props: ['submit_url', 'scrape_url', 'redirect_url'],
         data: function () {
             return {
                 ajaxUrl: this.submit_url,
                 ajaxScrapeUrl: this.scrape_url,
+                redirectUrl: this.redirect_url,
                 dc: {
                     name: '',
                     tasks: []
@@ -142,7 +143,7 @@
                     } else {
                         alert("Failed!");
                     }
-                    document.location.href = '/data-contracts';
+                    document.location.href = this.redirectUrl;
                 }.bind(this));
             }
         }

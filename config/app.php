@@ -234,6 +234,7 @@ return [
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
         'AppHelper' => App\Helpers\AppHelper::class,
+        'ScraperHelper' => App\Helpers\ScraperHelper::class
     ],
 
 ];

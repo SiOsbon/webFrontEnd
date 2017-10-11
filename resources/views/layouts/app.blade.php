@@ -45,12 +45,10 @@
                         @if (Auth::guest())
                             {{--<li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>--}}
-                            <li><a href="{{ route('nodes') }}">Node statistics</a></li>
                             <li><a href="{{ route('statistics') }}">System status</a></li>
+                            <li><a href="{{ route('nodes') }}">Node statistics</a></li>
                             <li><a href="{{ route('data_contracts') }}">Data contracts</a></li>
-                            <li><a href="{{ route('data_contract_create') }}">Upload data contract</a></li>
-                            <li><a href="{{ route('data_contract_create2') }}">Upload data contract(2)</a></li>
-                            <li><a href="{{ route('data_contract_find_create') }}">Find or upload data contract</a></li>
+                            <li><a href="{{ route('download') }}">Download</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
