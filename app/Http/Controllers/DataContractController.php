@@ -99,4 +99,10 @@ class DataContractController extends Controller
         return view('data_contract.results', compact('resultTasks', 'allCount', 'page', 'count', 'dataContractId',
             'contractName'));
     }
+
+    public function demoStore(Request $request) {
+        $input = $request->input();
+        $input["id"] = 5;
+        return response()->json($input);
+    }
 }
