@@ -31,6 +31,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/data-contracts/store-ajax', 'DataContractController@storeAjax')->name('data_contract_store_ajax');
     Route::post('/data-contracts/store', 'DataContractController@store')->name('data_contract_store');
     Route::post('/data-contracts/find-store-ajax', 'DataContractController@findStoreAjax')->name('data_contract_find_store_ajax');
+
+    Route::post('/demo-data-contracts/store', 'DataContractController@demoStore')->name('data_contract_demo_store');
+
 });
 
 /*Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
