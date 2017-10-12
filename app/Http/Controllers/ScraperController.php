@@ -32,9 +32,9 @@ class ScraperController extends Controller
                 $response = $c["content"];
                 if ($this->scraperHelper->isHtml($response)) {
                     $tags = ['head', 'script', 'javascript'];
-                    $response = $this->scraperHelper->removeTags($response, $tags);
+                    $response = $this->scraperHelper->processHtml($response, $tags);
                     //$response = preg_replace('/<a[^>]+\>/i', "", $response);
-                    $response = preg_replace('/<a(.*)href="([^"]*)"(.*)>/', '<a$1href="javascript:void(0);"$3>', $response);
+                    //$response = preg_replace('/<a(.*)href="([^"]*)"(.*)>/', '<a$1href="javascript:void(0);"$3>', $response);
                     $pattern = "#<\s*?body\b[^>]*>(.*?)</body\b[^>]*>#s";
                     preg_match($pattern, $response, $matches);
                     $result["body"] = $matches[1];

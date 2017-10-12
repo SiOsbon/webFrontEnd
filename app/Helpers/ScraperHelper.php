@@ -62,13 +62,17 @@ class ScraperHelper
         return false; // Does not contain HTML
     }
 
-    public function removeTags($html, $tags) {
+    public function processHtml($html, $tags) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         // set error level
         $internalErrors = libxml_use_internal_errors(true);
 
         // load HTML
         $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+        foreach ($dom->getElementsByTagName('a') as $item) {
+            $item->setAttribute('href', 'javascript:void(0);');
+        }
         $remove = [];
         foreach ($tags as $tag) {
             $script = $dom->getElementsByTagName($tag);
@@ -85,4 +89,6 @@ class ScraperHelper
         libxml_use_internal_errors($internalErrors);
         return $html;
     }
+
+
 }
