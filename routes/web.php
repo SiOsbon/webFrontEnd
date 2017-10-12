@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', 'HomeController@indexAdmin');
+    Route::get('/', 'HomeController@indexAdmin')->name('admin');
     Route::get('/data-contracts/create', 'DataContractController@create')->name('data_contract_create');
     Route::get('/data-contracts/create2', 'DataContractController@create2')->name('data_contract_create2');
     Route::get('/data-contracts/find-create', 'DataContractController@findCreate')->name('data_contract_find_create');
@@ -38,7 +38,7 @@ Route::prefix('admin')->group(function () {
 
 /*Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/', 'Auth\LoginController@login');*/
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/download', 'HomeController@download')->name('download');
 

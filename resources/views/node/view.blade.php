@@ -9,42 +9,37 @@
                 </div>
             @endif
         @endforeach
+        <p></p>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-2"><strong>Node id</strong></div>
-                            <div class="col-md-2"><strong>Node name</strong></div>
-                            <div class="col-md-2"><strong>Registered</strong></div>
-                            <div class="col-md-3"><strong>Total tasks executed</strong></div>
-                            <div class="col-md-2"><strong>Location</strong></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                {{ $node['id'] }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ $node['name'] }}
-                            </div>
-                            <div class="col-md-2">
-                                @php
-                                    $timeInSec = $node['registeredAt'] / 1000;
-                                @endphp
-                                {{ date("Y-m-d H:i:s",$timeInSec) }}
-                            </div>
-                            <div class="col-md-3">
-                                {{ $node['totalExecutedTasksCount'] }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ $node['location'] }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-m-2"><strong>Node id</strong></div>
+            <div class="col-m-2"><strong>Node name</strong></div>
+            <div class="col-m-3"><strong>Registered</strong></div>
+            <div class="col-m-3"><strong>Total tasks executed</strong></div>
+            <div class="col-m-2"><strong>Location</strong></div>
+        </div>
+        <div class="row">
+            <div class="col-m-2">
+                {{ $node['id'] }}
+            </div>
+            <div class="col-m-2">
+                {{ $node['name'] }}
+            </div>
+            <div class="col-m-3">
+                @php
+                    $timeInSec = $node['registeredAt'] / 1000;
+                @endphp
+                {{ date("Y-m-d H:i:s",$timeInSec) }}
+            </div>
+            <div class="col-m-3">
+                {{ $node['totalExecutedTasksCount'] }}
+            </div>
+            <div class="col-m-2">
+                {{ $node['location'] }}
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <p></p>
+        <div class="row">
+            <div class="col-m-12">
             {{ Form::open(['route' => ['node', $node["id"]], 'method' => 'post', 'id' => 'filter-stats']) }}
             <div class="pull-left">
                 {{ Form::label('interval', "Interval", ['class' => 'form-control-label']) }}
@@ -71,9 +66,12 @@
                 @endif
             </div>
             {{ Form::close() }}
-        <br><br>
-        <div id="nodeTaskChart"></div>
-        @columnchart('nodeTaskChart', 'nodeTaskChart')
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div id="nodeTaskChart"></div>
+            @columnchart('nodeTaskChart', 'nodeTaskChart')
         </div>
     </div>
 @endsection
