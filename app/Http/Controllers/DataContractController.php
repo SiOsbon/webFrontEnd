@@ -102,7 +102,37 @@ class DataContractController extends Controller
 
     public function demoStore(Request $request) {
         $input = $request->json()->all();
-        $input["id"] = 5;
-        return response()->json($input);
+        if (array_key_exists("fields", $input)) {
+            $fields = $input["fields"];
+            $field_xpaths = [
+                "name" => "/html/body/section/div/div/div/div/a[3]",
+                "company" => "/html/body/section/div/div/div/div/a[2]",
+                "photo" => "/html/body/section/div/div/div/div/a",
+                "rating" => "/html/body/section/div/div/div/div/div[2]/a",
+                "review-count" => "/html/body/section/div/div/div/div/div[2]/a[2]",
+                "price" => "/html/body/section/div/div/div/div/a[4]/span",
+                "in-stock" => "/html/body/section/div/div/div/div/a[5]"
+            ];
+
+            $task["targetURL"] = "http://mvp.daratus.com:8080/demo";
+            $task["type"] = "GetData";
+            $task["urls"] = [];
+            $data = new \stdClass();
+            $i = 0;
+            foreach ($fields as $field) {
+                if (array_key_exists($field, $field_xpaths)) {
+                    $data->$field = $field_xpaths[$field];
+                    $i++;
+                }
+            }
+            $dataContract["name"] = "Demo contract (".$i.")";
+            $task["data"] = $data;
+            $dataContract["tasks"][] = $task;
+            $result = $this->dataContractService->findUpdloadDataContract($dataContract);
+            if ($result["status"]) {
+                return response()->json(["id" => $result["body"]["dataContract"]["id"]]);
+            }
+        }
+        return response()->json(["id" => 0]);
     }
 }

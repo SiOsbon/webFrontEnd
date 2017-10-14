@@ -58,7 +58,7 @@
                 $('.modal-body *').click(function(e)
                 {
                     var value= getXPath( this );
-                    var start_str = '/html/body/div/div[2]/div/div/div[2]';
+                    var start_str = '/html/body/div/div/div[2]/div/div/div[2]';
                     value = value.substring(start_str.length);
                     value = '/html/body'+value;
                     //console.log(value);
@@ -74,7 +74,7 @@
                 $('.modal-body *').click(function(e)
                 {
                     var value= getXPath( event.target );
-                    var start_str = '/html/body/div/div[2]/div/div/div[2]';
+                    var start_str = '/html/body/div/div/div[2]/div/div/div[2]';
                     value = value.substring(start_str.length);
                     value = '/html/body'+value;
                     //console.log(value);
