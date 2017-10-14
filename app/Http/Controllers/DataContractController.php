@@ -104,6 +104,7 @@ class DataContractController extends Controller
         $input = $request->json()->all();
         if (array_key_exists("fields", $input)) {
             $fields = $input["fields"];
+            $fields = array_unique($fields);
             $field_xpaths = [
                 "name" => "/html/body/section/div/div/div/div/a[3]",
                 "company" => "/html/body/section/div/div/div/div/a[2]",
