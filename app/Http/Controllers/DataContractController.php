@@ -101,7 +101,7 @@ class DataContractController extends Controller
     }
 
     public function demoStore(Request $request) {
-        $input = $request->input();
+        $input = $request->json()->all();
         $input["id"] = 5;
         return response()->json($input);
     }
