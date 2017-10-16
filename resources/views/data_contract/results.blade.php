@@ -13,7 +13,8 @@
             $pageCnt = ceil($allCount/$count);
         @endphp
         <div class="row">
-            <div class="col-m-12"><h2>Data contract <strong>'{{ $contractName }}'</strong> results</h2></div>
+            <div class="col-m-12"><h2>Data contract <a href="{{ route('data_contract_view', ["dataContractId" => $dataContractId]) }}">
+                        <strong>'{{ $contractName }}'</strong></a> results</h2></div>
         </div>
         <div class="row">
             @for ($i=0; $i<count($resultTasks); $i++)
