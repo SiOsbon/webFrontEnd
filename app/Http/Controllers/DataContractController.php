@@ -117,6 +117,7 @@ class DataContractController extends Controller
 
             $task["targetURL"] = "http://mvp.daratus.com:8080/demo";
             $task["type"] = "GetData";
+            //$task["urls"] = ["/html/body/section/div/div/div/div/a[6]"];
             $task["urls"] = [];
             $data = new \stdClass();
             $i = 0;

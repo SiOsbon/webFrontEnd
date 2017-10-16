@@ -41,7 +41,9 @@
         </header>
         <div id="content">
         @yield('content')
+            @include('layouts.footer')
         </div>
+
     </div>
 
     <!-- Scripts -->

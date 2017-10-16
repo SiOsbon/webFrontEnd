@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>social-telegram</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="social-telegram" fill-rule="nonzero" fill="#FFFFFF">
+            <path d="M9.12500582,14.4493521 L8.88,18.12 C9.24,18.12 9.39906,17.95536 9.6,17.76 L10.8,16.62 L9.12600391,14.4500895 L14.928,18.73668 C15.59022,19.102068 16.068168,18.912888 16.23312,18.12186 L18.59532,6.9903 C18.837168,6.020676 18.225708,5.5809 17.592192,5.868516 L3.721392,11.217036 C2.77458,11.5968 2.7801,12.125028 3.548808,12.360396 L7.108368,13.471392 L15.349128,8.272392 C15.738156,8.036484 16.095204,8.1633132 15.802152,8.4234 L9.1248,14.4492 Z M12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

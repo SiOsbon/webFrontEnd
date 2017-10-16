@@ -2949,7 +2949,7 @@ header ul.menu li.key-button a {
         width: 40px;
         height: 40px;
         margin: 8px 0;
-        background: url("/img/menu.svg") center center no-repeat;
+        background: url("/images/menu.svg") center center no-repeat;
     }
     header ul.menu {
         float: none;
@@ -3240,31 +3240,31 @@ ul.social li.text-visible a {
     font-weight: bold;
 }
 ul.social li.slack a {
-    background-image: url("/img/social-slack.svg");
+    background-image: url("/images/social-slack.svg");
 }
 ul.social li.twitter a {
-    background-image: url("/img/social-twitter.svg");
+    background-image: url("/images/social-twitter.svg");
 }
 ul.social li.email a {
-    background-image: url("/img/social-email.svg");
+    background-image: url("/images/social-email.svg");
 }
 ul.social li.telegram a {
-    background-image: url("/img/social-telegram.svg");
+    background-image: url("/images/social-telegram.svg");
 }
 ul.social li.facebook a {
-    background-image: url("/img/social-facebook.svg");
+    background-image: url("/images/social-facebook.svg");
 }
 ul.social li.github a {
-    background-image: url("/img/social-github.svg");
+    background-image: url("/images/social-github.svg");
 }
 ul.social li.reddit a {
-    background-image: url("/img/social-reddit.svg");
+    background-image: url("/images/social-reddit.svg");
 }
 ul.social li.medium a {
-    background-image: url("/img/social-medium.svg");
+    background-image: url("/images/social-medium.svg");
 }
 ul.social li.bitcointalk a {
-    background-image: url("/img/social-bitcointalk.svg");
+    background-image: url("/images/social-bitcointalk.svg");
 }
 ul.social li a {
     display: block;
@@ -3865,6 +3865,7 @@ a.dark-button {
     margin: 2em 0 1em 0;
 }
 #footer {
+    margin-top: 100px;
     background: #17151f;
     color: #fff;
     padding: 48px 0 24px 0;
