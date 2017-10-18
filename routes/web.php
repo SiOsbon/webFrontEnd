@@ -58,5 +58,6 @@ Route::post('/node/{nodeId}', 'NodeController@view');
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 Route::post('/statistics', 'StatisticsController@index');
 Route::get('/raw-stats', 'StatisticsController@statsRaw')->name('raw_stats');
+//Route::get('/stats-test', 'StatisticsController@test')->name('test_stats');
 
 Route::post('/scrape', 'ScraperController@index')->name('scrape');

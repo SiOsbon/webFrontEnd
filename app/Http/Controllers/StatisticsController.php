@@ -70,4 +70,45 @@ class StatisticsController extends Controller
         dd($result);
     }
 
+    /*public function test(Request $request) {
+        $handle = fopen(__DIR__.'/node_counts.txt', "r");
+        $activeNodeCounts = [];
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                //echo "'".trim($line)."'<br>";
+                $elems = explode(" => ", trim($line, " \r\n"));
+                $activeNodeCounts[(int)$elems[0]] = (int)$elems[1];
+            }
+
+            fclose($handle);
+        } else {
+            // error opening the file.
+        }
+        $input = $request->input();
+        if (array_key_exists("interval", $input))
+            $params['interval'] = $input["interval"];
+        else
+            $params['interval'] = 60 * 60;
+        if (array_key_exists("period", $input))
+            $params['period'] = $input["period"];
+        else
+            $params['period'] = 60 * 60 * 24;
+
+        $interval = $params["interval"];
+        $period = $params["period"];
+        //dd($activeNodeCounts);
+
+        $this->chartService->generateDataContractsCountChart(null, $params);
+
+        $statistics["activeNodeCounts"] = $activeNodeCounts;
+        $this->chartService->generateNodeCountChart($activeNodeCounts, $params);
+
+        $this->chartService->generateTaskResultsChart(null, $params);
+
+        return view("statistics.view", compact("statistics", "dataContractChart",
+            "nodeCountChart", "taskResultsChart",
+            "period", "interval"));
+
+    }*/
+
 }

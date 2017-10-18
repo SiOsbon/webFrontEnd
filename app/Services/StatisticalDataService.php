@@ -54,21 +54,25 @@ class StatisticalDataService
         for ($i=0; $i<$count; $i++) {
             $newTs1 = $current - $interval * $i;
             $newTs2 = $current - $interval * ($i + 1);
-            $cnt = 0;
+            $max_interval = 0;
             foreach ($data as $key => $value) {
                 if ($key / 1000 + $timeZone <= $newTs1 and $key / 1000 + $timeZone >= $newTs2) {
                     $cnt = $value;
                     if ($cnt > $max)
                         $max = $cnt;
-                    break;
+                    if ($cnt > $max_interval)
+                        $max_interval = $cnt;
                 }
+                /*if ($key / 1000 + $timeZone < $newTs2) {
+                    break;
+                }*/
             }
             $dt = new \DateTime();
             $dt->setTimestamp($newTs2);
             if ($interval < 3600)
-                $rows[] = [$dt->format('H').":".$dt->format('i'), $cnt];
+                $rows[] = [$dt->format('H').":".$dt->format('i'), $max_interval];
             else
-                $rows[] = [$dt->format('H').":00", $cnt];
+                $rows[] = [$dt->format('H').":00", $max_interval];
         }
         $result['rows'] = array_reverse($rows);
 
