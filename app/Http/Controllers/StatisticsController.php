@@ -65,4 +65,9 @@ class StatisticsController extends Controller
             "period", "interval"));
     }
 
+    public function statsRaw() {
+        $result = $this->statisticsService->getSystemStatistics();
+        dd($result);
+    }
+
 }
