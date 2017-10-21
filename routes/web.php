@@ -39,7 +39,8 @@ Route::prefix('admin')->group(function () {
 
 /*Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/', 'Auth\LoginController@login');*/
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'StatisticsController@index')->name('home');
 
 Route::get('/download', 'HomeController@download')->name('download');
 

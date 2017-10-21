@@ -47,16 +47,16 @@
                         <a href="http://daratus.com/#team" target="_blank">Team</a>
                     </li>
                     <li>
-                        <a href="http://daratus.com/miners" target="_blank">Miners</a>
+                        <a href="http://daratus.com/data-miners" target="_blank">Miners</a>
                     </li>
                     <li>
                         <a href="http://daratus.com/bounty" target="_blank">Bounty</a>
                     </li>
                     <li>
-                        <a href="http://daratus.com/partnership" target="_blank">Partnership</a>
+                        <a href="http://daratus.com/data-providers" target="_blank">Data Providers</a>
                     </li>
-                    <li class="key-button">
-                        <a href="http://daratus.com/#register" target="_blank">Register for Token Sale</a>
+                    <li>
+                        <a href="http://daratus.com/data-apps">Build Data Apps</a>
                     </li>
                 </ul>
             </div>
