@@ -101,10 +101,13 @@ class DataContractController extends Controller
     }
 
     public function demoStore(Request $request) {
-        $input = $request->json()->all();
-        if (array_key_exists("fields", $input)) {
-            $fields = $input["fields"];
+        $input = $request->input();
+        if (array_key_exists("fields-list", $input)) {
+            $fields_list = json_decode($input["fields-list"]);
+            $fields = $fields_list->fields;
+            asort($fields);
             $fields = array_unique($fields);
+            //dd($fields);
             $field_xpaths = [
                 "name" => "/html/body/section/div/div/div/div/a[3]",
                 "company" => "/html/body/section/div/div/div/div/a[2]",
@@ -120,21 +123,23 @@ class DataContractController extends Controller
             //$task["urls"] = ["/html/body/section/div/div/div/div/a[6]"];
             $task["urls"] = [];
             $data = new \stdClass();
-            $i = 0;
+            $n = "";
             foreach ($fields as $field) {
                 if (array_key_exists($field, $field_xpaths)) {
                     $data->$field = $field_xpaths[$field];
-                    $i++;
+                    $n .= strtoupper(substr($field, 0, 1));
                 }
             }
-            $dataContract["name"] = "Demo contract (".$i.")";
+            $dataContract["name"] = "Demo contract (".$n.")";
             $task["data"] = $data;
             $dataContract["tasks"][] = $task;
             $result = $this->dataContractService->findUpdloadDataContract($dataContract);
             if ($result["status"]) {
-                return response()->json(["id" => $result["body"]["dataContract"]["id"]]);
+                return redirect()->route('data_contract_results', ["dataContractId" => $result["body"]["dataContract"]["id"]]);
+                //return response()->json(["id" => $result["body"]["dataContract"]["id"]]);
             }
         }
-        return response()->json(["id" => 0]);
+        return redirect()->route('home');
+        //return response()->json(["id" => 0]);
     }
 }
