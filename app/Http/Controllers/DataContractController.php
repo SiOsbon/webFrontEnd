@@ -117,6 +117,9 @@ class DataContractController extends Controller
                 "price" => "/html/body/section/div/div/div/div/a[4]/span",
                 "in-stock" => "/html/body/section/div/div/div/div/a[5]"
             ];
+            $urls = [
+                "/html/body/section/div/div/div/div/a[6]"
+            ];
 
             $task["targetURL"] = "http://mvp.daratus.com:8080/demo";
             $task["type"] = "GetData";
@@ -130,8 +133,9 @@ class DataContractController extends Controller
                     $n .= strtoupper(substr($field, 0, 1));
                 }
             }
-            $dataContract["name"] = "Demo contract (".$n.")";
+            $dataContract["name"] = "Demo data contract (".$n.")";
             $task["data"] = $data;
+            $task["urls"] = $urls;
             $dataContract["tasks"][] = $task;
             $result = $this->dataContractService->findUpdloadDataContract($dataContract);
             if ($result["status"]) {
