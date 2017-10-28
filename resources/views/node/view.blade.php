@@ -11,7 +11,7 @@
         @endforeach
         <p></p>
         <div class="row">
-            <div class="col-m-2"><strong>Node id</strong></div>
+            <div class="col-m-2"><strong>Node code</strong></div>
             <div class="col-m-2"><strong>Node name</strong></div>
             <div class="col-m-3"><strong>Registered</strong></div>
             <div class="col-m-3"><strong>Total tasks executed</strong></div>
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-m-2">
-                {{ $node['id'] }}
+                {{ $node['shortCode'] }}
             </div>
             <div class="col-m-2">
                 {{ $node['name'] }}
@@ -40,7 +40,7 @@
         <p></p>
         <div class="row">
             <div class="col-m-12">
-            {{ Form::open(['route' => ['node', $node["id"]], 'method' => 'post', 'id' => 'filter-stats']) }}
+            {{ Form::open(['route' => ['node-code', $node["shortCode"]], 'method' => 'post', 'id' => 'filter-stats']) }}
             <div class="pull-left">
                 {{ Form::label('interval', "Interval", ['class' => 'form-control-label']) }}
                 {{ Form::select('interval', \AppHelper::instance()->getIntervalSelecValues(), $interval,

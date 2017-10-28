@@ -14,6 +14,7 @@ class AppHelper
 
     public function getPeriodSelectValues() {
         return ["3600" => "1 hour",
+            "10800" => "3 hours",
             "43200" => "12 hours",
             "86400" => "24 hours",
             "172800" => "48 hours"];

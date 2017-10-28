@@ -13,25 +13,21 @@
             <div class="col-m-12"><h2>All nodes</h2></div>
         </div>
         <div class="row">
-            <div class="col-m-2"><strong>Node id</strong></div>
-            <div class="col-m-2"><strong>Name</strong></div>
+            <div class="col-m-2"><strong>Node code</strong></div>
+            <div class="col-m-4"><strong>Name</strong></div>
             <div class="col-m-3"><strong>Task executed count</strong></div>
-            <div class="col-m-2"><strong>Location</strong></div>
             <div class="col-m-3"><strong>Registered</strong></div>
         </div>
         @foreach($nodes as $node)
             <div class="row">
                 <div class="col-m-2">
-                    <a href="{{ route('node', ['nodeId' => $node['id']]) }}"> {{ $node['id'] }}</a>
+                    <a href="{{ route('node-code', ['nodeCode' => $node['shortCode']]) }}"> {{ $node['shortCode'] }}</a>
                 </div>
-                <div class="col-m-2">
+                <div class="col-m-4">
                     {{ $node['name'] }}
                 </div>
                 <div class="col-m-3">
                     {{ $node['totalExecutedTasksCount'] }}
-                </div>
-                <div class="col-m-2">
-                    {{ $node['location'] }}
                 </div>
                 <div class="col-m-3">
                     @php

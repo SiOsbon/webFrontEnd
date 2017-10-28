@@ -25,6 +25,33 @@ class NodeController extends Controller
         return view('node.list', compact("nodes"));
     }
 
+    public function viewByCode(Request $request, $nodeCode) {
+        $input = $request->input();
+        if (array_key_exists("interval", $input))
+            $params['interval'] = $input["interval"];
+        else
+            $params['interval'] = 60 * 60;
+        if (array_key_exists("period", $input))
+            $params['period'] = $input["period"];
+        else
+            $params['period'] = 60 * 60 * 24;
+
+        $interval = $params["interval"];
+        $period = $params["period"];
+
+        $result = $this->nodeService->getNodeByCode($nodeCode);
+        //dd($result);
+        $node = $result["body"];
+        $executedTaskTimes = null;
+
+        if (array_key_exists("executedTaskTimes", $node)) {
+            $executedTaskTimes = $node["executedTaskTimes"];
+        }
+        $this->chartsService->generateNodeExecutedTasksChart($executedTaskTimes, $params);
+
+        return view('node.view', compact("node", "nodeTaskChart", "interval", "period"));
+    }
+
     public function view(Request $request, $nodeId) {
         $input = $request->input();
         if (array_key_exists("interval", $input))

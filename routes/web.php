@@ -55,6 +55,9 @@ Route::get('/data-contracts/results/{dataContractId}/{page?}', 'DataContractCont
 Route::get('/nodes', 'NodeController@index')->name('nodes');
 Route::get('/node/{nodeId}', 'NodeController@view')->name('node');
 Route::post('/node/{nodeId}', 'NodeController@view');
+Route::get('/node/code/{nodeCode}', 'NodeController@viewByCode')->name('node-code');
+Route::post('/node/code/{nodeCode}', 'NodeController@viewByCode');
+
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 Route::post('/statistics', 'StatisticsController@index');

@@ -56,7 +56,9 @@
                     <strong>Contract JSON:</strong>
                     <p></p>
                     <pre>
-                        {{ json_encode($dataContract, JSON_PRETTY_PRINT) }}
+                        @php
+                            echo str_replace("\/", "/", json_encode($dataContract, JSON_PRETTY_PRINT));
+                        @endphp
                     </pre>
                 </div>
             </div>

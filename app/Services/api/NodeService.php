@@ -33,4 +33,10 @@ class NodeService
         return $result;
     }
 
+    public function getNodeByCode($nodeCode) {
+        $params["path"] = "/node/code/".$nodeCode;
+        $result = $this->apiClientService->requestGet($params);
+        return $result;
+    }
+
 }
