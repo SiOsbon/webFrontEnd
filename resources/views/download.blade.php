@@ -11,7 +11,7 @@
     @endforeach
     <p></p>
     <div class="row">
-        <div class="col-m-12">Download latest node application: <a href="/Daratus Node 0.0.6.zip" target="_blank">Daratus 0.0.6</a>
+        <div class="col-m-12">Download latest node application: <a href="/Daratus Node 0.0.7.zip" target="_blank">Daratus 0.0.7</a>
             <p></p>
             Node sources repository: <a href="https://github.com/daratus/node" target="_blank">https://github.com/daratus/node</a>
         </div>
