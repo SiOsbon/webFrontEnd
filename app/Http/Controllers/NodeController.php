@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NodeRegistrationRequest;
+use App\Mail\NodeRegistrationMail;
 use App\Services\Api\NodeService;
 use App\Services\ChartsService;
 use Illuminate\Http\Request;
+use Mail;
+use Lang;
 
 class NodeController extends Controller
 {
@@ -78,5 +82,25 @@ class NodeController extends Controller
 
         return view('node.view', compact("node", "nodeTaskChart", "interval", "period"));
     }
+
+    public function registration($referralCode = "") {
+        return view('node.registration', ["referralCode" => $referralCode]);
+    }
+
+    public function register(NodeRegistrationRequest $nodeRegistrationRequest) {
+        $input = $nodeRegistrationRequest->input();
+        $result = $this->nodeService->registerNode($input);
+        $node = $result["body"];
+        Mail::to($node["userEmail"])->send(new NodeRegistrationMail($node));
+        if (Mail::failures()) {
+            $nodeRegistrationRequest->session()->flash('alert-success',
+                Lang::get('general.mail.sent_fail', ['address' => $node["userEmail"]]));
+        } else {
+            $nodeRegistrationRequest->session()->flash('alert-success',
+                Lang::get('general.mail.sent_success', ['address' => $node["userEmail"]]));
+        }
+        return redirect()->route('node-registration', ["referralCode" => $node["shortCode"]]);
+    }
+
 
 }

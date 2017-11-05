@@ -53,10 +53,12 @@ Route::get('/data-contracts/stop/{dataContractId}', 'DataContractController@stop
 Route::get('/data-contracts/results/{dataContractId}/{page?}', 'DataContractController@results')->name('data_contract_results');
 
 Route::get('/nodes', 'NodeController@index')->name('nodes');
-Route::get('/node/{nodeId}', 'NodeController@view')->name('node');
-Route::post('/node/{nodeId}', 'NodeController@view');
+Route::get('/node/{nodeId}', 'NodeController@view')->name('node')->where(['nodeId' => '[0-9]+']);
+Route::post('/node/{nodeId}', 'NodeController@view')->where(['nodeId' => '[0-9]+']);
 Route::get('/node/code/{nodeCode}', 'NodeController@viewByCode')->name('node-code');
 Route::post('/node/code/{nodeCode}', 'NodeController@viewByCode');
+Route::get('/node/registration/{referralCode?}', 'NodeController@registration')->name('node-registration');
+Route::post('/node/register', 'NodeController@register')->name('node-register');
 
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
@@ -65,3 +67,6 @@ Route::get('/raw-stats', 'StatisticsController@statsRaw')->name('raw_stats');
 //Route::get('/stats-test', 'StatisticsController@test')->name('test_stats');
 
 Route::post('/scrape', 'ScraperController@index')->name('scrape');
+
+Route::post('/api/node/register', 'BackEndApiController@registerNode');
+Route::post('/api/node/referral-link', 'BackEndApiController@sendReferralLink');

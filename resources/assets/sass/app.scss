@@ -4,9 +4,8 @@
 
 // Variables
 @import "variables";
-
 // Bootstrap
-//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap"; //stripped bootstrap, only forms
 @import "~bootstrap-dialog/dist/css/bootstrap-dialog.min.css";
 
 @import "general";

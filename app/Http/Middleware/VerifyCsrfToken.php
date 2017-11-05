@@ -12,6 +12,8 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        "/admin/demo-data-contracts/store"
+        "/admin/demo-data-contracts/store",
+        "/api/node/register",
+        "/api/node/referral-link"
     ];
 }

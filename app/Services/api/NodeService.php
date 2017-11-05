@@ -39,4 +39,11 @@ class NodeService
         return $result;
     }
 
+    public function registerNode($input) {
+        $params["path"] = "/node/register";
+        $params["body"] = $input;
+        $result = $this->apiClientService->requestJson($params);
+        return $result;
+    }
+
 }
