@@ -31,7 +31,7 @@ if (isset($_GET['link'])){
         $json = '{"domain":"www.ammbr.com","name":"Ammbr","symbol":"AMMBR","logoLink":"https:\/\/tokenmarket.net\/blockchain\/blockchain\/assets\/ammbr\/logo_big.png","status":"ICO","description":"Global Bandwidth Tokenization","tokenSaleStartDate":"14. Nov 2017","tokenSaleStartInWords":"in 2 days","tokenSaleEndDate":"14. Dec 2017","tokenSaleEndInWords":"in a month","blog":"http:\/\/blog.ammbr.com\/","faceBook":"https:\/\/www.facebook.com\/AmmbrPlatform\/","twitter":"https:\/\/twitter.com\/ammbrplatform","twitter_followers":null,"linkedIn":"https:\/\/www.linkedin.com\/company\/22332635\/","slack":"https:\/\/tokenmarket.net\/what-is\/slack\/","telegram":"https:\/\/t.me\/ammbrICO","gitHub":"https:\/\/github.com\/ammbrteam","reddit":null,"reddit_subscribers":null,"reddit_active_users":null,"bitCoinTalk":null,"rank":null,"price_usd":null,"price_btc":null,"price_eth":null,"volume_usd_24h":null,"volume_btc_24h":null,"volume_eth_24h":null,"market_cap_usd":null,"market_cap_btc":null,"market_cap_eth":null,"percent_change_24h":null,"fundsRaised":null,"tokenStartPrice":null,"histoMinute":null,"histoHour":null,"histoDay":null,"icorating":"4","icocritic":"4.4","cryptorated":"4.5","tokentops":"4.3","icobench":"4.2","icobazaar":"4.1","digrate":"4.0","TotalVisits":"1564","TimeOnSite":"15s","PagesViews":"2","BounceRate":"50%","graph":"https:\/\/widget.similarweb.com\/traffic\/www.ammbr.com"}';
         break;
     default :
-        $json = '{"error": '. $domain .' Not Found" }';
+        $json = '{"error": "'. $domain .' Not Found" }';
         break;
   }
 
