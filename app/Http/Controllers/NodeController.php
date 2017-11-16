@@ -25,7 +25,10 @@ class NodeController extends Controller
 
     public function index() {
         $result = $this->nodeService->getAllNodes();
-        $nodes = $result["body"];
+        if ($result["body"])
+            $nodes = $result["body"];
+        else
+            $nodes = [];
         return view('node.list', compact("nodes"));
     }
 
