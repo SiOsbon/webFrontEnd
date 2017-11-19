@@ -68,5 +68,7 @@ Route::get('/raw-stats', 'StatisticsController@statsRaw')->name('raw_stats');
 
 Route::post('/scrape', 'ScraperController@index')->name('scrape');
 
+Route::get('/ph', 'PhantomController@index');
+
 Route::post('/api/node/register', 'BackEndApiController@registerNode');
 Route::post('/api/node/referral-link', 'BackEndApiController@sendReferralLink');

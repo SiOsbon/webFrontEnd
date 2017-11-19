@@ -179,7 +179,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+
+        Josh\Component\PhantomJs\Provider\PhantomJsServiceProvider::class
     ],
 
     /*
@@ -234,7 +236,8 @@ return [
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
         'AppHelper' => App\Helpers\AppHelper::class,
-        'ScraperHelper' => App\Helpers\ScraperHelper::class
+        'ScraperHelper' => App\Helpers\ScraperHelper::class,
+        'PJClient' => Josh\Component\PhantomJs\Facade\PhantomJs::class
     ],
 
 ];

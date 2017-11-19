@@ -7,10 +7,13 @@
     "require": {
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "^6.3",
+        "jonnyw/php-phantomjs": "4.*",
+        "josh/laravel-phantomjs": "^0.0.1",
         "khill/lavacharts": "3.0.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0"
+        "laravelcollective/html": "^5.4.0",
+        "merlinthemagic/mts": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -40,16 +43,21 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "php artisan optimize",
+            "PhantomInstaller\\Installer::installPhantomJS"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "PhantomInstaller\\Installer::installPhantomJS"
         ]
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "config": {
+            "bin-dir": "bin"
+        }
     }
 }
